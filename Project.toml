@@ -1,0 +1,4 @@
+name = "MathExpr"
+uuid = "eccf3ead-c2c7-44b9-8277-da356efd68a9"
+authors = ["chengzhengqian-game <chengzhengqian@gmail.com>"]
+version = "0.1.0"

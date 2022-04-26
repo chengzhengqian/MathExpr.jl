@@ -1,6 +1,6 @@
 module MathExpr
 # we use the new way to implement, following the scheme for multiop
-export SymbolPool, evalPool, Term, TermPool, evalTerm, SymExpr, addTerm!, addExpr, mulExpr, ExprEngine, SymExpr, simplify, __default__engine__map__
+export SymbolPool, evalPool, Term, TermPool, evalTerm, SymExpr, addTerm!, addExpr, mulExpr, ExprEngine, SymExpr, simplify,is_zero, __default__engine__map__
 """
 store all the symbols 
 """
@@ -282,6 +282,11 @@ function simplify(x::SymExpr)
     x
 end
 
+function is_zero(x::SymExpr)
+    length(x.coefficient)==0
+end
+
+
 function Base.:(+)(x::SymExpr, c::Number)
     x+((ExprEngine(x))(c))
 end
@@ -321,6 +326,8 @@ function Base.convert(::Type{Float64}, expr::SymExpr)
         error("can't convert $(expr) to Float!")
     end    
 end
+
+
 
 """
 for convient, a global default engine.
